@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AcreIQ</title>
+</head>
+<body>
+    <h1>Welcome to AcreIQ</h1>
+    <p>Your farm profit calculator.</p>
+    <form method="post">
+        {% csrf_token %}
+
+        <label> Total acres of corn:</label>
+        <input type="number" name="total_corn" step="0.01" required>
+        <label>Total acres of soybeans:</label>
+        <input type="number" name="total_soybeans" step="0.01" required>
+    
+        <label>Average corn population per field:</label>
+        <input type="number" name="pop_corn" step="0.01" required>
+    
+        <label>Average bean population per field:</label>
+        <input type="number" name="pop_beans" step="0.01" required>
+    
+        <label>Expected bushels per acre (corn):</label>
+        <input type="number" name="bushels_corn" step="0.01" required>
+    
+        <label>Expected bushels per acre (beans):</label>
+        <input type="number" name="bushels_beans" step="0.01" required>
+    
+        <button type="submit">Calculate</button>
+
+    </form>
+    {% if total_revenue %}
+        <h2>Estimated Revenue: ${{ total_revenue }}</h2>
+    {% endif %}
+</body>
+</html>
