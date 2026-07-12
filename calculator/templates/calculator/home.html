@@ -10,27 +10,43 @@
         {% csrf_token %}
 
         <label> Total acres of corn:</label>
-        <input type="number" name="total_corn" step="0.01" required>
+        <input type="number" name="total_corn" step="0.01">
         <label>Total acres of soybeans:</label>
-        <input type="number" name="total_soybeans" step="0.01" required>
+        <input type="number" name="total_soybeans" step="0.01">
     
         <label>Average corn population per field:</label>
-        <input type="number" name="pop_corn" step="0.01" required>
+        <input type="number" name="pop_corn" step="0.01">
     
         <label>Average bean population per field:</label>
-        <input type="number" name="pop_beans" step="0.01" required>
+        <input type="number" name="pop_beans" step="0.01">
     
         <label>Expected bushels per acre (corn):</label>
-        <input type="number" name="bushels_corn" step="0.01" required>
+        <input type="number" name="bushels_corn" step="0.01">
     
         <label>Expected bushels per acre (beans):</label>
-        <input type="number" name="bushels_beans" step="0.01" required>
-    
+        <input type="number" name="bushels_beans" step="0.01">
+
+        <label>Estimated seed costs:</label>
+        <input type="number" name="cost_seed" step="0.01">
+
+        <label>Estimated fertilizer costs:</label>
+        <input type="number" name="cost_fert" step="0.01">
+
+        <label>Estimated rent costs:</label>
+        <input type="number" name="cost_rent" step="0.01">
+
+
+        <label>Misc. costs:</label>
+        <input type="number" name="cost_misc" step="0.01">
+
         <button type="submit">Calculate</button>
+
 
     </form>
     {% if total_revenue %}
         <h2>Estimated Revenue: ${{ total_revenue }}</h2>
+        <h2>Total Costs: ${{ total_cost }}</h2>
+        <h2>Net Profit: $ {{ net_profit }}</h2>
     {% endif %}
 </body>
 </html>
