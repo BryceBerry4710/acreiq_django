@@ -13,22 +13,56 @@ def home(request):
         cost_rent = float(request.POST.get('cost_rent') or 0)
         cost_misc = float(request.POST.get('cost_misc') or 0)
 
-
+        #Total income added together. Based on a set price currently.
         price_corn = 5.35
         price_beans = 11.50
-        total_revenue = round(total_corn * bushels_corn * price_corn) \
-            + (total_soybeans * bushels_beans * price_beans, 2)
-        
+        total_revenue = round((total_corn * bushels_corn * price_corn) \
+                              + (total_soybeans * bushels_beans * price_beans), 2)
+        #All costs added together.
         total_cost = round(cost_seed + cost_fert \
                       + cost_rent + cost_misc, 2)
+        #Income minus costs.
+        net_profit = round(total_revenue - total_cost, 2)
+
+        #total_bushels = (total_corn * bushels_corn) + (total_soybeans * bushels_beans)
+        #break_even_price = round(total_cost / total_bushels, 2) if total_bushels > 0 else 0
+
+        #Finding our break even price per crop type (Corn and soybeans.)
+        if total_corn + total_soybeans > 0:
+            corn_percent = total_corn / (total_corn + total_soybeans)
+            bean_percent = total_soybeans / (total_corn + total_soybeans)
+
+            #Splitting costs by actual percentages.
+            corn_costs = total_cost * corn_percent
+            bean_costs = total_cost * bean_percent
+
+            #Breaking even per crop:
+            corn_break_even = round(corn_costs / (total_corn * bushels_corn), 2)\
+                                     if total_corn * bushels_corn > 0 else 0
+            bean_break_even = round(bean_costs / (total_soybeans * bushels_beans), 2)\
+                                    if total_soybeans * bushels_beans > 0 else 0
+            
+            corn_profitable = price_corn > corn_break_even
+            bean_profitable = price_beans > bean_break_even
+
+        #Profitable indication.
+        else:
+            corn_break_even = 0
+            bean_break_even = 0
         
-        net_proft = round(total_revenue - total_cost, 2)
 
 
         return render(request, 'calculator/home.html', 
                     {'total_revenue': total_revenue,
                     'total_cost': total_cost,
-                    'net_profit': net_proft,
+                    'net_profit': net_profit,
+                    'corn_break_even' : corn_break_even,
+                    'bean_break_even' : bean_break_even,
+                    'corn_profitable' : corn_profitable,
+                    'bean_profitable' : bean_profitable,
+                    
+
+
                 })
     else:
         return render(request, 'calculator/home.html')
