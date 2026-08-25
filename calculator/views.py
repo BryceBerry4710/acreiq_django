@@ -6,6 +6,8 @@ def home(request):
     if request.method == 'POST':
         total_corn = float(request.POST.get('total_corn') or 0)
         total_soybeans = float(request.POST.get('total_soybeans') or 0)
+        pop_corn = float(request.POST.get('pop_corn') or 0)
+        pop_beans = float(request.POST.get('pop_beans') or 0)
         bushels_corn = float(request.POST.get('bushels_corn') or 0)
         bushels_beans = float(request.POST.get('bushels_beans') or 0)
         cost_seed = float(request.POST.get('cost_seed') or 0)
@@ -53,6 +55,7 @@ def home(request):
 
 
         return render(request, 'calculator/home.html', 
+                      # Inputs rendered
                     {'total_revenue': total_revenue,
                     'total_cost': total_cost,
                     'net_profit': net_profit,
@@ -60,6 +63,18 @@ def home(request):
                     'bean_break_even' : bean_break_even,
                     'corn_profitable' : corn_profitable,
                     'bean_profitable' : bean_profitable,
+
+                    # Input values to repopulate form
+                    'total_corn': total_corn,
+                    'total_soybeans': total_soybeans,
+                    'pop_corn': pop_corn,
+                    'pop_beans': pop_beans,
+                    'bushels_corn': bushels_corn,
+                    'bushels_beans': bushels_beans,
+                    'cost_seed': cost_seed,
+                    'cost_fert': cost_fert,
+                    'cost_rent': cost_rent,
+                    'cost_misc': cost_misc,
                     
 
 

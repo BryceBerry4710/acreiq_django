@@ -10,34 +10,34 @@
         {% csrf_token %}
 
         <label> Total acres of corn:</label>
-        <input type="number" name="total_corn" step="0.01">
+        <input type="number" name="total_corn" step="0.01" value="{{ total_corn}}">
         <label>Total acres of soybeans:</label>
-        <input type="number" name="total_soybeans" step="0.01">
+        <input type="number" name="total_soybeans" step="0.01" value="{{ total_soybeans }}">
     
         <label>Average corn population per field:</label>
-        <input type="number" name="pop_corn" step="0.01">
+        <input type="number" name="pop_corn" step="0.01" value="{{ pop_corn }}">
     
         <label>Average bean population per field:</label>
-        <input type="number" name="pop_beans" step="0.01">
+        <input type="number" name="pop_beans" step="0.01" value="{{ pop_beans }}">
     
         <label>Expected bushels per acre (corn):</label>
-        <input type="number" name="bushels_corn" step="0.01">
+        <input type="number" name="bushels_corn" step="0.01" value="{{ bushels_corn }}">
     
         <label>Expected bushels per acre (beans):</label>
-        <input type="number" name="bushels_beans" step="0.01">
+        <input type="number" name="bushels_beans" step="0.01" value="{{ bushels_beans }}">
 
         <label>Estimated seed costs:</label>
-        <input type="number" name="cost_seed" step="0.01">
+        <input type="number" name="cost_seed" step="0.01" value="{{ cost_seed }}">
 
         <label>Estimated fertilizer costs:</label>
-        <input type="number" name="cost_fert" step="0.01">
+        <input type="number" name="cost_fert" step="0.01" value="{{ cost_fert }}">
 
         <label>Estimated rent costs:</label>
-        <input type="number" name="cost_rent" step="0.01">
+        <input type="number" name="cost_rent" step="0.01" value="{{ cost_rent }}">
 
 
         <label>Misc. costs:</label>
-        <input type="number" name="cost_misc" step="0.01">
+        <input type="number" name="cost_misc" step="0.01" value="{{ cost_misc }}">
 
         <button type="submit">Calculate</button>
 
