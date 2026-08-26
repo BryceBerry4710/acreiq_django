@@ -51,6 +51,8 @@ def home(request):
         else:
             corn_break_even = 0
             bean_break_even = 0
+            corn_profitable = False
+            bean_profitable = False
         
 
 

@@ -1,0 +1,24 @@
+body {
+    background-color: #F7F5F0;
+
+}
+
+h1 {
+    color: #2d5016;
+
+}
+
+.results-section h2 {
+    color: #2d5016;
+
+}
+
+.profit-value{
+    color: #C9971c;
+
+}
+
+.btn-success {
+    background-color: #2d5016;
+    border-color: #2d5016;
+}
