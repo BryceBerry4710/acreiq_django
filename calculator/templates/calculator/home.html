@@ -76,23 +76,25 @@
 
 
     </form>
+    <div class="results-section">
     {% if total_revenue %}
         <h2>Estimated Revenue: ${{ total_revenue }}</h2>
         <h2>Total Costs: ${{ total_cost }}</h2>
-        <h2>Net Profit: $ {{ net_profit }}</h2>
-        <h2>Break Even Price (Corn): $ {{ corn_break_even }}</h2>
-        <h2>Break Even Price (Soybeans): $ {{bean_break_even }}</h2>
+        <h2>Net Profit: $<span class="profit-value">{{ net_profit }}</span></h2>
+        <h2>Break Even Price (Corn): ${{ corn_break_even }}</h2>
+        <h2>Break Even Price (Soybeans): ${{bean_break_even }}</h2>
         {% if corn_profitable %}
-            <p>Corn: Currently Profitable</p>
+            <p class ="text-success">Corn: Currently Profitable</p>
         {% else %}
-            <p>Corn: Below Break-Even</p>
+            <p class ="text-danger">Corn: Below Break-Even</p>
     {% endif %}
     {% if bean_profitable %}
-        <p>Beans: Currently Profitable</p>
+        <p class ="text-success">Beans: Currently Profitable</p>
     {% else %}
-        <p>Beans: Below Break-Even</p>
+        <p class ="text-danger">Beans: Below Break-Even</p>
         {% endif %}
 {% endif %}
     </div>
+</div>
 </body>
 </html>
